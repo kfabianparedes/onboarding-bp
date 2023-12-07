@@ -1,0 +1,24 @@
+.container {
+  border: 0.1rem solid #dbdbdc;
+  background-color: #FFF;
+  width: 45rem;
+
+  &__header {
+    padding: 2rem;
+  }
+
+  &__body {
+    padding: 0 2rem 2rem;
+  }
+
+  &__footer {
+    padding: 2rem;
+    display: flex;
+    justify-content: space-between;
+    background-color: #F3F3F3;
+  }
+
+  @media only screen and (max-width: 767px) {
+    width: auto;
+  }
+}

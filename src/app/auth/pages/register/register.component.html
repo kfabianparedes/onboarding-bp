@@ -1,0 +1,150 @@
+<div class="container">
+  <div class="container__header">
+    <pichincha-typography
+      variant="prelo-slab"
+      color="bp-grayScale500"
+      weight="800"
+      size="3rem"
+      lineHeight="40px"
+      spacing=0.5
+      category="h2"
+      align="left"
+      tabIndexElement=0>
+      Registrarse
+    </pichincha-typography>
+
+    <pichincha-divider variant="solid_dark"></pichincha-divider>
+  </div>
+  
+  <div class="container__body">
+    <form (ngSubmit)="registerUser()">
+      <!-- Inicia información de usuario - inputs -->
+      <pichincha-input
+        is-optional="false"
+        state="none"
+        error-helper="Error Message"
+        type="text"
+        placeholder="Ej. makoto"
+        label="Nombre de usuario"
+      ></pichincha-input>
+      
+      <pichincha-input
+        is-optional="false"
+        state="none"
+        error-helper="Error Message"
+        type="text"
+        placeholder="Ej. name@example.com"
+        label="Correo electrónico"
+      ></pichincha-input>
+
+      <pichincha-input
+        is-optional="false"
+        state="none"
+        error-helper=""
+        type="password"
+        placeholder="*****"
+        label="Contraseña"
+      ></pichincha-input>
+
+      <pichincha-input
+        is-optional="false"
+        state="none"
+        error-helper=""
+        type="password"
+        placeholder="*****"
+        label="Confirmar contraseña"
+      ></pichincha-input>
+      <!-- Finaliza información de usuario - inputs -->
+      
+      <!-- Inicia categorías - check box -->
+      <pichincha-typography
+        variant="prelo-slab"
+        color="bp-grayScale500"
+        weight="800"
+        size="3rem"
+        lineHeight="40px"
+        spacing=0.5
+        category="h2"
+        align="left"
+        tabIndexElement=0>
+        Categorías
+      </pichincha-typography>
+
+      <pichincha-check-box
+        id-element="anime-cb"
+        type-check="check"
+        size="small"
+        text="Anime"
+        error="false"
+        checked="false"
+      ></pichincha-check-box>
+
+      <pichincha-check-box
+        id-element="ciencia-ficcion-cb"
+        type-check="check"
+        size="small"
+        text="Ciencia Ficción"
+        error="false"
+        checked="false"
+      ></pichincha-check-box>
+
+      <pichincha-check-box
+        id-element="novela-cb"
+        type-check="check"
+        size="small"
+        text="Novela"
+        error="false"
+        checked="false"
+      ></pichincha-check-box>
+
+      <pichincha-check-box
+        id-element="drama-cb"
+        type-check="check"
+        size="small"
+        text="Drama"
+        error="false"
+        checked="false"
+      ></pichincha-check-box>
+
+      <pichincha-check-box
+        id-element="inteligencia-artificial-cb"
+        type-check="check"
+        size="small"
+        text="Inteligencia Artificial"
+        error="false"
+        checked="false"
+      ></pichincha-check-box>
+      <!-- Finaliza categorías - check box -->
+
+
+    </form>
+  </div>
+  
+  <div class="container__footer">
+    <pichincha-link-button
+      link-button-id="link-login"
+      link-button-tab-index="10"
+      link-button-aria-label="link-login"
+      label="Iniciar sesión"
+      variant="action"
+      trailing-icon="none"
+      disabled="false"
+      loading="false"
+      href="/signin"
+    ></pichincha-link-button>
+
+    <pichincha-button
+      button-id="register-button"
+      button-tab-index="11"
+      button-aria-label="register-button"
+      type="button"
+      custom-width="200px"
+      custom-height="50px"
+      variant="primary"
+      size="xlarge"
+      label="Registrar"
+      (click)="registerUser()" 
+    ></pichincha-button>
+  </div>
+
+</div>
