@@ -1,4 +1,6 @@
 import { Component } from '@angular/core';
+import { LoginFormService } from '../../services/form-service/login-form.service';
+import { AlertService } from 'src/app/shared/services/event/alert.service';
 
 @Component({
   selector: 'app-login',
@@ -7,8 +9,13 @@ import { Component } from '@angular/core';
 })
 export class LoginComponent {
 
-  login(): void {
-    console.log('login');
+  constructor(
+    public loginFormService: LoginFormService, 
+    public alertService:AlertService
+  ){ }
+
+  signin(): void {
+    this.loginFormService.submitForm();
   }
   
 }

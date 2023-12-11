@@ -1,5 +1,8 @@
-<div class="container">
-  <div class="container__header">
+<div class="login-container">
+
+  <bp-alert *ngIf="alertService.showAlert$ | async"></bp-alert>
+  
+  <header class="login-container__header">
     <pichincha-typography
       variant="prelo-slab"
       color="bp-grayScale500"
@@ -8,37 +11,38 @@
       lineHeight="40px"
       spacing=0.5
       category="h2"
-      align="left">
+      align="left"
+    >
       Iniciar sesión
     </pichincha-typography>
 
     <pichincha-divider variant="solid_dark"></pichincha-divider>
-  </div>
-  <div class="container__body">
-    <form (ngSubmit)="login()">
-      
+  </header>
+  <section class="login-container__body">
+    <form [formGroup]="loginFormService.signInForm" data-testid="form" (ngSubmit)="loginFormService.submitForm()">
       <pichincha-input
+        formControlName="username"
         is-optional="false"
-        state="none"
-        error-helper=""
+        state="{{loginFormService.username.error}}"
+        errorHelper="{{loginFormService.username.usernameMessageError}}"
         type="text"
         placeholder="Ej. name@example.com"
-        label="Correo electrónico"
+        label="Nombre de usuario"
       ></pichincha-input>
-
+      <br>
       <pichincha-input
+        formControlName="password"
         is-optional="false"
-        state="none"
-        error-helper=""
+        state="{{loginFormService.password.error}}"
+        errorHelper="{{loginFormService.password.passwordMessageError}}"
         type="password"
         placeholder="*****"
         label="Contraseña"
       ></pichincha-input>
-
     </form>
-  </div>
+  </section>
   
-  <div class="container__footer">
+  <footer class="login-container__footer">
     <pichincha-link-button
       link-button-id="link-register"
       link-button-tab-index="3"
@@ -48,19 +52,20 @@
       trailing-icon="none"
       disabled="false"
       loading="false"
-      href="/register"
+      routerLink="/register"
     ></pichincha-link-button>
 
     <pichincha-button
       button-id="login-button"
       button-tab-index="4"
       button-aria-label="login-button"
-      type="button"
       custom-width="180px"
       custom-height="50px"
       variant="primary"
       size="xlarge"
       label="Iniciar Sesión"
+      type="submit"
+      (click)="signin()"
     ></pichincha-button>
-  </div>
+  </footer>
 </div>

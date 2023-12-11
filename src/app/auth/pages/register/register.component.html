@@ -1,5 +1,8 @@
-<div class="container">
-  <div class="container__header">
+<div class="register-container">
+  <div class="register-container__header">
+
+    <bp-alert *ngIf="alertService.showAlert$ | async"></bp-alert>
+
     <pichincha-typography
       variant="prelo-slab"
       color="bp-grayScale500"
@@ -16,40 +19,44 @@
     <pichincha-divider variant="solid_dark"></pichincha-divider>
   </div>
   
-  <div class="container__body">
-    <form (ngSubmit)="registerUser()">
+  <div class="register-container__body">
+    <form [formGroup]="signupService.signUpForm" data-testid="form" (ngSubmit)="registerUser()">
       <!-- Inicia información de usuario - inputs -->
       <pichincha-input
+        formControlName="username"
         is-optional="false"
-        state="none"
-        error-helper="Error Message"
+        state="{{signupService.username.error}}"
+        errorHelper="{{signupService.username.usernameMessageError}}"
         type="text"
         placeholder="Ej. makoto"
         label="Nombre de usuario"
       ></pichincha-input>
-      
+      <br>
       <pichincha-input
+        formControlName="email"
         is-optional="false"
-        state="none"
-        error-helper="Error Message"
+        state="{{signupService.email.error}}"
+        errorHelper="{{signupService.email.emailMessageError}}"
         type="text"
         placeholder="Ej. name@example.com"
         label="Correo electrónico"
       ></pichincha-input>
-
+      <br>
       <pichincha-input
+        formControlName="password"
         is-optional="false"
-        state="none"
-        error-helper=""
+        state="{{signupService.password.error}}"
+        errorHelper="{{signupService.password.passwordMessageError}}"
         type="password"
         placeholder="*****"
         label="Contraseña"
       ></pichincha-input>
-
+      <br>
       <pichincha-input
+        formControlName="confirmPassword"
         is-optional="false"
-        state="none"
-        error-helper=""
+        state="{{signupService.confirmPassword.error}}"
+        errorHelper="{{signupService.confirmPassword.confirmPasswordMessageError}}"
         type="password"
         placeholder="*****"
         label="Confirmar contraseña"
@@ -120,7 +127,7 @@
     </form>
   </div>
   
-  <div class="container__footer">
+  <div class="register-container__footer">
     <pichincha-link-button
       link-button-id="link-login"
       link-button-tab-index="10"
@@ -130,19 +137,19 @@
       trailing-icon="none"
       disabled="false"
       loading="false"
-      href="/signin"
+      routerLink="/signin"
     ></pichincha-link-button>
 
     <pichincha-button
       button-id="register-button"
       button-tab-index="11"
       button-aria-label="register-button"
-      type="button"
       custom-width="200px"
       custom-height="50px"
       variant="primary"
       size="xlarge"
       label="Registrar"
+      type="submit"
       (click)="registerUser()" 
     ></pichincha-button>
   </div>

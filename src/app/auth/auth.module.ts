@@ -5,7 +5,13 @@ import { AuthRoutingModule } from './auth-routing.module';
 import { LoginComponent } from './pages/login/login.component';
 import { RegisterComponent } from './pages/register/register.component';
 
-import { PichinchaButtonModule, PichinchaCheckBoxModule, PichinchaDividerModule, PichinchaInputModule, PichinchaLinkButtonModule, PichinchaReactiveControlsModule, PichinchaTypographyModule } from '@pichincha/ds-angular';
+import { PichinchaAlertsModule, PichinchaButtonModule, PichinchaCheckBoxModule, PichinchaDividerModule, PichinchaInputModule, PichinchaLinkButtonModule, PichinchaReactiveControlsModule, PichinchaTypographyModule } from '@pichincha/ds-angular';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { LoginFormService } from './services/form-service/login-form.service';
+import { AuthClientService } from './services/client-service/auth-client.service';
+import { SigninService } from './services/signin.service';
+import { SharedModule } from '../shared/shared.module';
+import { SignupService } from './services/form-service/signup.service';
 
 const WEB_COMPONENTS = [
   PichinchaTypographyModule,
@@ -13,7 +19,21 @@ const WEB_COMPONENTS = [
   PichinchaDividerModule,
   PichinchaInputModule,
   PichinchaLinkButtonModule,
-  PichinchaCheckBoxModule
+  PichinchaCheckBoxModule,
+  PichinchaAlertsModule
+]
+
+const FORMS = [
+  FormsModule,
+  ReactiveFormsModule,
+  PichinchaReactiveControlsModule
+]
+
+const SERVICES = [
+  AuthClientService,
+  LoginFormService,
+  SigninService,
+  SignupService
 ]
 
 @NgModule({
@@ -24,8 +44,12 @@ const WEB_COMPONENTS = [
   imports: [
     CommonModule,
     AuthRoutingModule,
-    WEB_COMPONENTS,
-    PichinchaReactiveControlsModule
+    ...WEB_COMPONENTS,
+    ...FORMS,
+    SharedModule
+  ],
+  providers:[
+    ...SERVICES
   ]
 })
 export class AuthModule { }

@@ -1,4 +1,6 @@
 import { Component } from '@angular/core';
+import { AlertService } from 'src/app/shared/services/event/alert.service';
+import { SignupService } from '../../services/form-service/signup.service';
 
 @Component({
   selector: 'pichincha-register',
@@ -7,8 +9,12 @@ import { Component } from '@angular/core';
 })
 export class RegisterComponent {
 
+  constructor(
+    public signupService: SignupService, 
+    public alertService:AlertService
+  ){ }
 
   registerUser(): void {
-    console.log('register user');
+    this.signupService.submitForm();
   }
 }
